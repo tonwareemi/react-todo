@@ -1,4 +1,4 @@
-import React ,{useState,useEffect} from "react"
+import React ,{useState} from "react"
 import List from "./list"
 
 
@@ -6,21 +6,25 @@ function App(){
 
     //state with items and list
     const [item,setItem] = useState("")
-    const [list ,setList] = useState(["jerry","tommy","john"]);
+    const [list ,setList] = useState([]);
 
     //item saver
     const saver = event =>{
-        setItem({val: event.target.value,key:`n${list.lenght}`})
+        setItem(event.target.value)
     }
 
     //items adding into array
     const adding = ()=>{
         var l = list;
-        l.push(item)
+        l.push({value:item,id:`n${list.length}`})
         setList(l)
         console.log(list)
         setItem("")
         //console.log(list)
+    }
+
+    const itemRemover =()=>{
+        
     }
 
     return(
@@ -37,7 +41,7 @@ function App(){
                 </div>
                 <div className="addBtn" onClick={adding}>Add</div>
             </div>
-            <List items={list}/>
+            <List items={list} deleteFunction={itemRemover}/>
         </div>
         
     )

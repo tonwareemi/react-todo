@@ -1,13 +1,13 @@
 import React from "react"
 
-function List({items}){
+function List({items,deleteFunction}){
 
 	return(
 		<div className="list">
 			{
 				items.map((val,i)=>(
-					<div className="item" key={`n${i}`}>
-					<p>{i + 1}</p>	<p>{val}</p> <span>del</span>
+					<div className="item" key={val.key}>
+						<p>{val.value}</p> <span onClick={deleteFunction}>del</span>
 					</div>
 				))
 			}
