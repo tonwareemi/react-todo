@@ -23,9 +23,12 @@ function App(){
         //console.log(list)
     }
 
-    const itemRemover =()=>{
-        
+    function remover(id){
+        const del = list.filter(data => data.id !== id);
+        setList(del)
     }
+
+    
 
     return(
         <div className="home">
@@ -41,7 +44,7 @@ function App(){
                 </div>
                 <div className="addBtn" onClick={adding}>Add</div>
             </div>
-            <List items={list} deleteFunction={itemRemover}/>
+            <List items={list} deleteFun={remover}/>
         </div>
         
     )
